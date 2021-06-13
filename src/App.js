@@ -13,14 +13,23 @@ export default class App extends React.Component {
   }
 
   handleIncrease=()=>{
-    this.setState({qty:this.state.qty+1})
+    this.setState((prevState)=>{
+      return{
+        qty:prevState.qty+1
+      }
+    })
   }
 
   handleDecrease=()=>{
-    this.setState({qty:this.state.qty-1})
-    if(this.state.qty==0){
-      this.setState({qty:0})
+    const{qty}=this.state;
+    if(qty==0){
+      return;
     }
+    this.setState((prevState)=>{
+      return{
+        qty:prevState.qty-1
+      }
+    })
   }
   render(){
     const{price,title,qty}=this.state
