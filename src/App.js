@@ -13,7 +13,14 @@ export default class App extends React.Component {
   }
 
   handleIncrease=()=>{
-    this.setState={}
+    this.setState({qty:this.state.qty+1})
+  }
+
+  handleDecrease=()=>{
+    this.setState({qty:this.state.qty-1})
+    if(this.state.qty==0){
+      this.setState({qty:0})
+    }
   }
   render(){
     const{price,title,qty}=this.state
@@ -31,7 +38,7 @@ export default class App extends React.Component {
             <div className="cart-item-actions">
               {/*buttons*/}
               <img alt="increase" onClick={this.handleIncrease} className="action-icons" src="https://image.flaticon.com/icons/png/128/992/992651.png" />
-              <img alt="decrease" className="action-icons" src="https://image.flaticon.com/icons/png/512/992/992683.png" />
+              <img alt="decrease" onClick={this.handleDecrease}  className="action-icons" src="https://image.flaticon.com/icons/png/512/992/992683.png" />
               <img alt="delete" className="action-icons" src="https://image.flaticon.com/icons/png/128/3096/3096673.png" />
             </div>
           </div>
