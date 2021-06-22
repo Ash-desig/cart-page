@@ -1,17 +1,17 @@
 import React from 'react';
 
-export default class Navbar extends React.Component{
-  render(){
-    return(
-      <div style={styles.nav}>
-        <div style={styles.cartIconContainer}>
-          <img style={styles.cartIcon}src="https://image.flaticon.com/icons/png/128/1170/1170678.png" alt="Cart icon"/>
-          <span style={styles.cartCount}>3</span>
-        </div>
+const Navbar =(props)=>{
+  return(
+    <div style={styles.nav}>
+      <div style={styles.cartIconContainer}>
+        <img style={styles.cartIcon}src="https://image.flaticon.com/icons/png/128/1170/1170678.png" alt="Cart icon"/>
+        <span style={styles.cartCount}>{props.count}</span>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default Navbar;
 
 const styles={
   cartIcon:{
