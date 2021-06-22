@@ -5,7 +5,7 @@ export default class Navbar extends React.Component{
     return(
       <div style={styles.nav}>
         <div style={styles.cartIconContainer}>
-          <img style={styles.cartIcon}src="https://img-premium.flaticon.com/png/128/2838/premium/2838895.png?token=exp=1624090546~hmac=5d37499a9221f564c4c0eeca13746eff" alt="Cart icon"/>
+          <img style={styles.cartIcon}src="https://image.flaticon.com/icons/png/128/1170/1170678.png" alt="Cart icon"/>
           <span style={styles.cartCount}>3</span>
         </div>
       </div>
@@ -16,14 +16,17 @@ export default class Navbar extends React.Component{
 const styles={
   cartIcon:{
     height: 32,
-    marginRight: 20
+    marginRight: 30
   },
   nav:{
     height: 70,
     background: '#4267b2',
     display: 'flex',
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop:-8,
+    marginRight:-8,
+    marginLeft:-8
   },
   cartIconContainer:{
     position:'relative'
@@ -33,7 +36,7 @@ const styles={
     borderRadius:'50%',
     padding: '4px 8px',
     position:'absolute',
-    right:0,
-    top:-9
+    right:10,
+    top:-10
   }
 }
