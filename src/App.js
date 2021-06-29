@@ -2,35 +2,33 @@ import React from "react";
 import Cart from './Cart';
 import Navbar from './Navbar';
 import "./style.css";
+import * as firebase from 'firebase';
+
 
 export default class App extends React.Component{
   constructor(){
     super();
     this.state={
-      products:[
-        {
-          price:99,
-          title: 'Watch',
-          qty: 10,
-          img: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2h8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-          id:1
-        },
-        {
-          price:999,
-          title: 'Mobile Phone',
-          qty: 5,
-          img:'https://images.unsplash.com/photo-1589492477829-5e65395b66cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1vYmlsZSUyMHBob25lfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-          id:2
-        },
-        {
-          price:9990,
-          title: 'Laptop',
-          qty: 7,
-          img: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bGFwdG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-          id:3
-        }
-      ]
+      products:[]
     }
+  }
+  ComponentDidMount(){
+    firebase
+      .firestore()
+      .collection('products')
+      .get()
+      .then((snapshot)=>{
+        console.log(snapshot);
+        snapshot.docs.map((doc)=>{
+          console.log(doc.data())
+        });
+        const products=snapshot.docs.map((doc)=>{
+          return doc.data()
+        })
+        this.setState({
+          products
+        })
+      })
   }
   handleIncreaseQty=(product)=>{
     const{products}=this.state;
